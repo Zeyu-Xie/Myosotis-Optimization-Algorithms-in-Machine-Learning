@@ -4,7 +4,7 @@
 
 导数和微分的概念
 
-$f'({{x}_{0}})=\underset{\Delta x\to 0}{\mathop{\lim}}\,\frac{f({{x}_{0}}+\Delta x)-f({{x}_{0}})}{\Delta x}$ （1）
+${% raw %}f'({{x}_{0}})=\underset{\Delta x\to 0}{\mathop{\lim }}\,\frac{f({{x}_{0}}+\Delta x)-f({{x}_{0}})}{\Delta x}{% endraw %}$ （1）
 
 或者：
 
