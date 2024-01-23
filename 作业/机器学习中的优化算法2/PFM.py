@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import approx_fprime
 
+
 def objective_function(x):
     return x[0]**2 + x[1]**2 - 2*x[0] + 1
 
@@ -33,7 +34,9 @@ def gradient_descent(initial_x, learning_rate, iterations, penalty_param):
             constraint_gradients.append(
                 approx_fprime(x, constraint, epsilon=1e-8))
 
-        total_gradient = gradient + 2 * penalty_param * np.sum([max(0, constraint(x)) * np.array(gradient) for constraint in constraints], axis=0)
+        total_gradient = gradient + 2 * penalty_param * \
+            np.sum([max(0, constraint(x)) * np.array(gradient)
+                   for constraint in constraints], axis=0)
         x = x - learning_rate * total_gradient
 
         history.append(x.copy())
@@ -75,8 +78,8 @@ ax.plot_surface(X, Y, Z, alpha=0.5, cmap='viridis')
 ax.scatter(history[:, 0], history[:, 1], objective_function(
     history.T), c='red', marker='o', label='Gradient Descent')
 ax.set_title('Gradient Descent with Penalty Function (3D)')
-ax.set_xlabel('x1')
-ax.set_ylabel('x2')
+ax.set_xlabel('x0')
+ax.set_ylabel('x1')
 ax.set_zlabel('Objective Function')
 ax.legend()
 
