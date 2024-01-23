@@ -43,11 +43,13 @@ $ f(x) = x^2 + 2x + 1 $
 
 ### 目标函数
 
-$ f(x) = x^2 + 2x + 1 $
+$ f(x) = x_0^2+x_1^2-2x_0+1 $
 
 ### 约束条件
 
-$ x \geq 2 $
+$ x_0+x_1\leq 1 $
+
+$2x_0-3\leq x_1$
 
 ### 算法
 
@@ -55,13 +57,14 @@ $ x \geq 2 $
 
 罚函数法的梯度下降算法如下：
 
-1. 初始化参数：```x = 5.0```
+1. 初始化参数：$x=(-0.5,\space 0.5)^T$
 2. 设置学习率：```learing_rate = 0.1```
-3. 设置迭代次数：```num_iterations = 50```
-4. 设置罚项系数：```penalty_coefficient = 10```
-5. 设置约束条件的值：```constraint_value = 2```
-6. 计算总目标梯度的函数 ```gradient_total_penalty = 2 * x + 2 - penalty_coefficient * ( x - constraint_value > 0 )```
-7. 迭代更新：```x = x - learning_rate * gradient_total_penalty```
+3. 设置迭代次数：```iterations = 50```
+4. 设置罚参数：```penalty_param = 10.0```
+5. 设置约束条件一：```x[0] + x[1] - 1```
+6. 设置约束条件二：```2 * x[0] - x[1] - 3```
+7. 计算总梯度：```total_gradient = gradient + 2 * penalty_param * np.sum([max(0, constraint(x)) * np.array(gradient) for constraint in constraints], axis=0)```
+9. 迭代更新：```x = x - learning_rate * total_gradient```
 
 #### ALM
 
@@ -80,7 +83,7 @@ ALM 算法如下：
 
 我们通过数值实验验证了罚函数法梯度下降算法的性能。我们使用了初始值为5.0的参数，并观察了50次迭代的优化过程。
 
-
+![PFM](./PFM.png)
 
 实验结果表明，在约束条件下，算法能够有效地优化目标函数，并且罚项系数的选择对优化结果产生了影响。图表展示了优化过程中目标函数值的变化。
 
