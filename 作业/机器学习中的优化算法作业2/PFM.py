@@ -2,25 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import approx_fprime
 
-
 def objective_function(x):
     return x[0]**2 + x[1]**2 - 2*x[0] + 1
-
 
 def constraint1(x):
     return x[0] + x[1] - 1
 
-
 def constraint2(x):
     return 2*x[0] - x[1] - 3
-
 
 def penalty_function(x, constraints, penalty_param):
     penalty = 0
     for constraint in constraints:
         penalty += max(0, constraint(x))**2
     return penalty_param * penalty
-
 
 def gradient_descent(initial_x, learning_rate, iterations, penalty_param):
     x = np.array(initial_x, dtype=float)
@@ -43,7 +38,6 @@ def gradient_descent(initial_x, learning_rate, iterations, penalty_param):
 
     return np.array(history)
 
-
 # 初始点
 initial_point = [-0.5, 0.5]
 
@@ -62,8 +56,6 @@ constraints = [constraint1, constraint2]
 # 使用梯度下降法求解带有罚函数的优化问题
 history = gradient_descent(
     initial_point, learning_rate, iterations, penalty_param)
-
-print(history)
 
 # 绘制梯度下降过程的三维图
 fig = plt.figure()

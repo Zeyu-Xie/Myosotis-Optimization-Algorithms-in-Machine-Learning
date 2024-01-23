@@ -2,15 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def target_function(x):
-    """目标函数，这里以一个简单的二次函数为例"""
     return x**2 + 2*x + 1
 
 def gradient(x):
-    """目标函数的梯度，对于二次函数，梯度为2x + 2"""
     return 2*x + 2
 
 def stochastic_gradient_descent(initial_x, learning_rate, num_iterations, batch_size):
-    """随机梯度下降算法"""
     x_values = []
     y_values = []
 
@@ -34,7 +31,6 @@ def stochastic_gradient_descent(initial_x, learning_rate, num_iterations, batch_
     return x_values, y_values
 
 def plot_stochastic_gradient_descent(x_values, y_values):
-    """绘制随机梯度下降过程"""
     plt.plot(x_values, y_values, '-o', label='Stochastic Gradient Descent')
     plt.xlabel('x')
     plt.ylabel('f(x)')
