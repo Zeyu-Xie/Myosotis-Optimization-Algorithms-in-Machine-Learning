@@ -59,7 +59,7 @@ result = minimize(
 print(objective_values)
 
 # 绘制目标函数值随迭代次数的变化曲线
-plt.plot(objective_values, marker='o')
+plt.plot(objective_values[1:], marker='o')
 plt.title('LASSO Objective Function Value vs Iteration (Nesterov Accelerated)')
 plt.xlabel('Iteration')
 plt.ylabel('Objective Function Value')
